@@ -1,0 +1,78 @@
+{
+  "expo": {
+    "name": "Field Compass",
+    "slug": "field-compass",
+    "version": "1.0.6",
+    "orientation": "portrait",
+    "icon": "./assets/app_icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.fieldcompass.mobile",
+      "infoPlist": {
+        "NSMotionUsageDescription": "Field Compass uses motion sensors to show the bubble level."
+      }
+    },
+    "android": {
+      "package": "com.fieldcompass.app",
+      "versionCode": 9,
+      "adaptiveIcon": {
+        "backgroundColor": "#0B1E3B",
+        "foregroundImage": "./assets/app-icon-foreground.png",
+        "monochromeImage": "./assets/app-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": true,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "com.android.vending.BILLING"
+      ],
+      "blockedPermissions": [
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.ACTIVITY_RECOGNITION",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/app_icon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Field Compass uses your location for coordinates, altitude, true north, and directions to saved places. Your location stays on your device.",
+          "isIosBackgroundLocationEnabled": false,
+          "isAndroidBackgroundLocationEnabled": false,
+          "isAndroidForegroundServiceEnabled": false
+        }
+      ],
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }"
+          }
+        }
+      ],
+      "./plugins/with-release-optimization.cjs",
+      "./plugins/with-app-version.cjs",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-6230290323057717~4319498817",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511",
+          "delayAppMeasurementInit": true
+        }
+      ],
+      "expo-iap"
+    ],
+    "scheme": "field-compass"
+  }
+}
